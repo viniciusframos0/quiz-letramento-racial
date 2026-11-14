@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quiz de Letramento Racial — IEEP</title>
+<meta name="description" content="Quiz da Cartilha de Letramento Racial do IEEP: 64 perguntas sobre conceitos, direitos e educação antirracista. Escolha 10, 20 ou 30 e leia no seu ritmo.">
+<meta name="theme-color" content="#1F3A5C">
+<link rel="canonical" href="https://viniciusframos0.github.io/quiz-letramento-racial/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Compartilhamento (WhatsApp, Facebook, Instagram, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="IEEP — Instituto de Educação do Estado do Pará">
+<meta property="og:title" content="Quiz de Letramento Racial — IEEP">
+<meta property="og:description" content="Você conhece os conceitos e direitos da educação antirracista? São 64 perguntas da cartilha do IEEP, sem cronômetro: leia no seu ritmo. Bora jogar!">
+<meta property="og:url" content="https://viniciusframos0.github.io/quiz-letramento-racial/">
+<meta property="og:image" content="https://viniciusframos0.github.io/quiz-letramento-racial/assets/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Brasão do IEEP ao lado do título Quiz da Cartilha de Letramento Racial, com faixas de padronagem africana.">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quiz de Letramento Racial — IEEP">
+<meta name="twitter:description" content="64 perguntas da cartilha do IEEP sobre conceitos, direitos e educação antirracista. Leia no seu ritmo. Bora jogar!">
+<meta name="twitter:image" content="https://viniciusframos0.github.io/quiz-letramento-racial/assets/og-image.jpg">
+<meta name="twitter:image:alt" content="Brasão do IEEP ao lado do título Quiz da Cartilha de Letramento Racial.">
+<meta name="author" content="Vinícius Ferreira Ramos">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Baloo+2:wght@600;700;800&display=swap">
+<style>
+/* Layout: página de pergaminho com faixas de padronagem no topo e no rodapé (como a cartilha);
+   coluna única, telas trocadas no lugar: início → pergunta → resultado; ficha técnica em painel sobreposto. */
+:root {
+  color-scheme: light;
+  --paper: #FCD68F;
+  --card: rgba(255, 247, 228, .82);
+  --card-solid: #FFF7E4;
+  --ink: #2B1D10;
+  --muted: #6E5233;
+  --line: #D9AE6B;
+  --navy: #1F3A5C;
+  --navy-dark: #132842;
+  --terra: #A94A2E;
+  --gold: #E9A21A;
+  --green: #1E6B2E;
+  --greenbg: #DCEFD6;
+  --red: #8E1B12;
+  --redbg: #F8DCD2;
+  --display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --faixa-h: 64px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: var(--paper) url("assets/pergaminho.jpg") repeat;
+  background-size: 420px;
+  color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+  display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh;
+}
+.faixa {
+  height: calc(var(--faixa-h) + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  background: url("assets/faixa.jpg") repeat-x left bottom / auto var(--faixa-h);
+  flex: none;
+}
+.faixa.baixo {
+  height: var(--faixa-h); padding: 0; margin-bottom: env(safe-area-inset-bottom, 0px);
+  background-position: left center; transform: scaleY(-1);
+}
+main {
+  flex: 1; width: 100%; max-width: 720px; margin: 0 auto;
+  padding: 26px max(18px, env(safe-area-inset-left, 0px)) 34px max(18px, env(safe-area-inset-right, 0px));
+}
+section { display: flex; flex-direction: column; gap: 18px; }
+[hidden] { display: none !important; }
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.1; text-wrap: balance; color: var(--navy); }
+p { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, label:focus-within > span, a:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+
+/* ---------- Início ---------- */
+.gov { text-align: center; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
+.logo {
+  display: block; width: min(250px, 62vw); aspect-ratio: 544 / 520; margin: 2px auto -4px;
+  background: url("assets/logo-ieep.jpg") center / contain no-repeat;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 48%, #000 68%, transparent 100%);
+          mask-image: radial-gradient(ellipse 70% 70% at 50% 48%, #000 68%, transparent 100%);
+}
+.title { text-align: center; display: flex; flex-direction: column; gap: 6px; }
+.title .kicker { font-family: var(--display); font-weight: 700; color: var(--terra); font-size: 1.05rem; letter-spacing: .06em; text-transform: uppercase; }
+.title h1 { font-size: clamp(2.2rem, 9vw, 3.3rem); font-weight: 800; letter-spacing: -.01em; }
+.title .tag { color: var(--terra); font-weight: 700; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; }
+
+.card { background: var(--card); border: 1.5px solid var(--line); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 18px;
+  box-shadow: 0 2px 0 rgba(120, 70, 10, .12); backdrop-filter: blur(1px); }
+.label { font-family: var(--display); font-weight: 700; font-size: 1.2rem; color: var(--terra); }
+.field { display: flex; flex-direction: column; gap: 10px; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.seg label { position: relative; }
+.seg input, .switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.seg span {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 74px; border-radius: 14px;
+  border: 2px solid var(--line); background: var(--card-solid); cursor: pointer; line-height: 1.05;
+}
+.seg b { font-family: var(--display); font-weight: 800; font-size: 1.8rem; color: var(--navy); }
+.seg small { font-size: .78rem; color: var(--muted); }
+.seg input:checked + span { background: var(--navy); border-color: var(--navy); }
+.seg input:checked + span b, .seg input:checked + span small { color: #fff; }
+
+.how { font-size: .93rem; color: var(--muted); border-left: 4px solid var(--gold); padding: 2px 0 2px 12px; }
+.how b { color: var(--ink); }
+
+.switches { display: flex; flex-direction: column; gap: 14px; }
+.switch { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; cursor: pointer; font-weight: 700; }
+.switch small { display: block; color: var(--muted); font-size: .85rem; font-weight: 400; }
+.knob { width: 52px; height: 30px; border-radius: 999px; background: var(--line); position: relative; transition: background .2s; }
+.knob::after { content: ""; position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; transition: transform .2s; }
+.switch input:checked + .knob { background: var(--green); }
+.switch input:checked + .knob::after { transform: translateX(22px); }
+.switch input:focus-visible + .knob { outline: 3px solid var(--navy); outline-offset: 2px; }
+
+.btn {
+  border: 0; border-radius: 16px; min-height: 62px; padding: 0 24px; width: 100%;
+  background: var(--navy); color: #fff; font-family: var(--display); font-weight: 800; font-size: 1.4rem;
+  box-shadow: 0 5px 0 var(--gold); transition: transform .08s, box-shadow .08s;
+}
+.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--gold); }
+.btn-ghost { border: 2px solid var(--navy); background: transparent; color: var(--navy); border-radius: 16px; min-height: 56px; width: 100%;
+  font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+.record { text-align: center; color: var(--muted); font-size: .93rem; }
+.source { text-align: center; color: var(--muted); font-size: .85rem; font-style: italic; }
+.foot-link { align-self: center; background: none; border: 0; color: var(--muted); font-size: .85rem; text-decoration: underline; text-underline-offset: 3px; padding: 6px 10px; }
+.foot-link:hover { color: var(--navy); }
+
+/* ---------- Jogo ---------- */
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.topbar .left { display: flex; align-items: center; gap: 10px; }
+.count { font-family: var(--display); font-weight: 800; font-size: 1.3rem; color: var(--navy); font-variant-numeric: tabular-nums; }
+.clock { font-size: .9rem; color: var(--muted); font-variant-numeric: tabular-nums; display: inline-flex; align-items: center; gap: 4px; }
+.clock svg { width: 15px; height: 15px; }
+.score { font-family: var(--display); font-weight: 800; font-size: 1.3rem; color: var(--terra); font-variant-numeric: tabular-nums; }
+.quit { border: 1.5px solid var(--line); background: var(--card-solid); color: var(--ink); font-weight: 700; font-size: .9rem; padding: 6px 14px; min-height: 40px; border-radius: 999px; }
+.mute { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--card-solid); display: grid; place-items: center; padding: 0; color: var(--navy); }
+.mute svg { width: 20px; height: 20px; }
+.mute.off { color: var(--muted); opacity: .75; }
+.progress { height: 8px; border-radius: 999px; background: rgba(120, 70, 10, .15); overflow: hidden; }
+.progress i { display: block; height: 100%; width: 0; border-radius: 999px;
+  background: linear-gradient(90deg, var(--red), var(--gold), var(--green)); transition: width .4s ease; }
+
+.qcard { gap: 12px; }
+.sec { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--terra); }
+.qtext { font-family: var(--display); font-weight: 700; font-size: clamp(1.25rem, 4.6vw, 1.5rem); line-height: 1.25; color: var(--navy); text-wrap: pretty; }
+.qtext.anim { animation: rise .35s ease; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.opts { display: flex; flex-direction: column; gap: 10px; }
+.opt {
+  display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px; text-align: left; width: 100%;
+  min-height: 60px; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line);
+  background: var(--card-solid); font-size: 1.02rem; line-height: 1.38;
+  box-shadow: 0 3px 0 var(--line); transition: transform .08s, opacity .2s, border-color .15s;
+}
+.opt:hover:not(:disabled) { border-color: var(--navy); }
+.opt:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 1px 0 var(--line); }
+.opt .key { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff;
+  font-family: var(--display); font-weight: 800; font-size: 1rem; flex: none; }
+.opt:disabled { cursor: default; }
+.opt.is-right { background: var(--greenbg); border-color: var(--green); box-shadow: 0 3px 0 var(--green); }
+.opt.is-right .key { background: var(--green); }
+.opt.is-wrong { background: var(--redbg); border-color: var(--red); box-shadow: 0 3px 0 var(--red); animation: shake .35s; }
+.opt.is-wrong .key { background: var(--red); }
+.opt.is-dim { opacity: .5; }
+@keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+.feedback { gap: 10px; border-left: 6px solid var(--green); }
+.feedback.bad { border-left-color: var(--red); }
+.fb-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.fb-title { font-family: var(--display); font-weight: 800; font-size: 1.45rem; color: var(--green); }
+.feedback.bad .fb-title { color: var(--red); }
+.fb-pts { font-size: .9rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.fb-pts b { color: var(--ink); }
+.fb-exp { font-size: 1rem; }
+.fb-ref { font-size: .85rem; color: var(--terra); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.fb-ref svg { width: 16px; height: 16px; flex: none; }
+
+/* ---------- Resultado ---------- */
+.seal {
+  align-self: center; width: min(250px, 70vw); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, var(--card-solid) 60%, transparent 61%),
+              repeating-conic-gradient(var(--red) 0 10deg, var(--gold) 10deg 20deg, var(--green) 20deg 30deg, var(--ink) 30deg 40deg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; padding: 40px;
+  animation: seal .55s cubic-bezier(.3, 1.5, .5, 1); margin-top: 4px;
+  box-shadow: 0 4px 0 rgba(120, 70, 10, .2);
+}
+@keyframes seal { from { transform: scale(.5) rotate(-25deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.seal .tiny { font-size: .66rem; letter-spacing: .18em; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+.seal h2 { font-size: clamp(1.15rem, 5vw, 1.4rem); color: var(--navy); }
+.stars { display: flex; gap: 2px; }
+.stars svg { width: 30px; height: 30px; }
+.newrec { text-align: center; font-weight: 700; color: var(--green); }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stat { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+.stat b { display: block; font-family: var(--display); font-size: 2rem; line-height: 1; color: var(--navy); font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: .88rem; }
+.stat.main { grid-column: 1 / -1; background: var(--navy); border-color: var(--navy); }
+.stat.main b { color: #fff; font-size: 2.6rem; }
+.stat.main span { color: #E6D6B8; }
+.breakdown { font-size: .9rem; color: var(--muted); text-align: center; }
+.review h3 { font-size: 1.25rem; }
+.rv { border-top: 1px solid var(--line); padding-top: 12px; }
+.rv:first-of-type { border-top: 0; padding-top: 0; }
+.rv summary { cursor: pointer; display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; list-style: none; font-weight: 700; line-height: 1.35; }
+.rv summary::-webkit-details-marker { display: none; }
+.rv .mark { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: .85rem; margin-top: 1px; }
+.rv .mark.ok { background: var(--green); } .rv .mark.no { background: var(--red); }
+.rv .body { padding: 10px 0 4px 36px; display: flex; flex-direction: column; gap: 6px; font-size: .95rem; }
+.rv .body .yours { color: var(--red); } .rv .body .right { color: var(--green); font-weight: 700; }
+.rv .body .why { color: var(--ink); }
+.rv .body .ref { color: var(--terra); font-size: .82rem; font-weight: 700; }
+.actions { display: grid; gap: 12px; }
+
+/* ---------- Modais ---------- */
+.overlay { position: fixed; inset: 0; z-index: 50; background: rgba(43, 29, 16, .55); display: grid; place-items: center;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.dialog { background: var(--paper) url("assets/pergaminho.jpg") repeat; background-size: 420px; border-radius: 20px; width: 100%; max-width: 400px;
+  padding: 24px 20px 20px; display: flex; flex-direction: column; gap: 14px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,.3); animation: pop .3s cubic-bezier(.3, 1.5, .5, 1); }
+.dialog h2 { font-size: 1.6rem; }
+.dialog p { color: var(--muted); } .dialog p b { color: var(--ink); }
+.btn-danger { border: 2px solid var(--red); background: transparent; color: var(--red); border-radius: 16px; min-height: 56px; width: 100%; font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+@keyframes pop { from { transform: scale(.85); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.sheet { position: fixed; inset: 0; z-index: 60; overflow-y: auto; background: var(--paper) url("assets/pergaminho.jpg") repeat; background-size: 420px;
+  display: flex; flex-direction: column; animation: rise .3s ease; }
+.sheet main { gap: 22px; display: flex; flex-direction: column; }
+.sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sheet-head h2 { font-size: 1.8rem; }
+.close { border: 1.5px solid var(--line); background: var(--card-solid); border-radius: 999px; min-height: 42px; padding: 0 16px; font-weight: 700; }
+.credit-block h3 { font-size: 1.3rem; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--terra); }
+.people { display: flex; flex-direction: column; gap: 12px; }
+.person b { display: block; color: var(--ink); }
+.person span { color: var(--muted); font-size: .92rem; }
+.dev { background: var(--navy); border-radius: 18px; padding: 18px 20px; color: #fff; display: flex; flex-direction: column; gap: 4px; }
+.dev .k { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+.dev b { font-family: var(--display); font-size: 1.5rem; line-height: 1.1; }
+.dev span { color: #E6D6B8; font-size: .92rem; }
+.inst { text-align: center; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+.inst b { color: var(--navy); font-family: var(--display); font-size: 1.05rem; }
+.note { font-size: .88rem; color: var(--muted); }
+
+@media (max-width: 380px) { :root { --faixa-h: 48px; } .card { padding: 16px; } .seg span { min-height: 66px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="faixa" aria-hidden="true"></div>
+
+<main>
+  <!-- INÍCIO -->
+  <section id="home">
+    <p class="gov">Governo do Estado do Pará · Secretaria de Estado de Educação<br>Instituto de Educação do Estado do Pará</p>
+    <div class="logo" role="img" aria-label="Brasão do IEEP — Instituto de Educação do Estado do Pará. Ensinar é também semear."></div>
+    <div class="title">
+      <span class="kicker">Quiz da Cartilha de</span>
+      <h1>Letramento Racial</h1>
+      <span class="tag">Conceitos • Direitos • Educação antirracista</span>
+    </div>
+
+    <div class="card">
+      <div class="field">
+        <span class="label">Quantas perguntas?</span>
+        <div class="seg" role="radiogroup" aria-label="Quantidade de perguntas">
+          <label><input type="radio" name="qtd" value="10" checked><span><b>10</b><small>~8 min</small></span></label>
+          <label><input type="radio" name="qtd" value="20"><span><b>20</b><small>~15 min</small></span></label>
+          <label><input type="radio" name="qtd" value="30"><span><b>30</b><small>~22 min</small></span></label>
+        </div>
+      </div>
+      <p class="how"><b>Sem cronômetro correndo:</b> leia no seu ritmo. Cada acerto vale <b>100 pontos</b>, e quem responde dentro do tempo de leitura da pergunta ganha até <b>+50 de bônus</b>. Erros não tiram pontos.</p>
+      <div class="switches">
+        <label class="switch"><span>Música de fundo<small>Trilha suave enquanto você responde</small></span><input type="checkbox" id="optMus" checked><span class="knob"></span></label>
+        <label class="switch"><span>Sons<small>Avisos sonoros de acerto e erro</small></span><input type="checkbox" id="optSom" checked><span class="knob"></span></label>
+        <label class="switch"><span>Ler em voz alta<small>Lê a pergunta e as alternativas; o tempo só conta depois da leitura</small></span><input type="checkbox" id="optVoz"><span class="knob"></span></label>
+      </div>
+    </div>
+
+    <button class="btn" id="startBtn">Começar</button>
+    <p class="record" id="record"></p>
+    <p class="source">Perguntas elaboradas a partir da Cartilha de Letramento Racial do IEEP (Belém, 2026).</p>
+    <button class="foot-link" id="creditsBtn">Ficha técnica e créditos</button>
+  </section>
+
+  <!-- JOGO -->
+  <section id="game" hidden>
+    <div class="topbar">
+      <div class="left">
+        <span class="count" id="count">1/10</span>
+        <span class="clock" title="Tempo total"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg><span id="clock">0:00</span></span>
+      </div>
+      <span class="score" id="score">0 pts</span>
+      <div class="left">
+        <button class="mute" id="muteBtn" aria-label="Desligar música" title="Música"></button>
+        <button class="quit" id="quitBtn">Encerrar</button>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+    <div class="card qcard">
+      <span class="sec" id="sec"></span>
+      <p class="qtext" id="qtext"></p>
+    </div>
+
+    <div class="opts" id="opts"></div>
+
+    <div class="card feedback" id="feedback" hidden aria-live="polite">
+      <div class="fb-head"><span class="fb-title" id="fbTitle"></span><span class="fb-pts" id="fbPts"></span></div>
+      <p class="fb-exp" id="fbExp"></p>
+      <p class="fb-ref"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 21V5M8 7h7"/></svg><span id="fbRef"></span></p>
+    </div>
+    <button class="btn" id="nextBtn" hidden>Próxima</button>
+  </section>
+
+  <!-- RESULTADO -->
+  <section id="result" hidden>
+    <div class="seal">
+      <span class="tiny">Letramento Racial</span>
+      <div class="stars" id="stars"></div>
+      <h2 id="rank"></h2>
+    </div>
+    <p class="newrec" id="newrec" hidden>Novo recorde!</p>
+    <div class="stats">
+      <div class="stat main"><b id="rPoints">0</b><span>pontos</span></div>
+      <div class="stat"><b id="rCorrect">0/10</b><span>acertos</span></div>
+      <div class="stat"><b id="rTime">0:00</b><span>tempo total</span></div>
+      <div class="stat"><b id="rAvg">0s</b><span>média por pergunta</span></div>
+      <div class="stat"><b id="rBest">0</b><span>seu recorde</span></div>
+    </div>
+    <p class="breakdown" id="breakdown"></p>
+    <div class="card review">
+      <h3>Revise suas respostas</h3>
+      <div id="reviewList"></div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="againBtn">Jogar de novo</button>
+      <button class="btn-ghost" id="homeBtn">Voltar ao início</button>
+    </div>
+  </section>
+</main>
+
+<div class="faixa baixo" aria-hidden="true"></div>
+
+<!-- Confirmar saída -->
+<div class="overlay" id="confirm" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" hidden>
+  <div class="dialog">
+    <h2 id="confirmTitle">Encerrar o quiz?</h2>
+    <p id="confirmText"></p>
+    <button class="btn" id="keepBtn">Continuar respondendo</button>
+    <button class="btn-danger" id="endBtn">Sim, encerrar</button>
+  </div>
+</div>
+
+<!-- Ficha técnica -->
+<div class="sheet" id="credits" role="dialog" aria-modal="true" aria-labelledby="creditsTitle" hidden>
+  <div class="faixa" aria-hidden="true"></div>
+  <main>
+    <div class="sheet-head">
+      <h2 id="creditsTitle">Ficha técnica</h2>
+      <button class="close" id="closeCredits">Fechar</button>
+    </div>
+
+    <div class="credit-block">
+      <h3>Ficha Técnica da Cartilha</h3>
+      <div class="people">
+        <div class="person"><b>Ricardo Nasser Sefer</b><span>Secretário de Estado de Educação</span></div>
+        <div class="person"><b>Joseane Oliveira Figueiredo</b><span>Dirigente da Diretoria Regional de Ensino de Belém 02</span></div>
+        <div class="person"><b>Jorge Henrique Guimarães de Andrade</b><span>Diretor do Instituto de Educação do Estado do Pará</span></div>
+        <div class="person"><b>Edilmary Oliveira Dias Teixeira</b><span>Vice-Diretora Pedagógica do Instituto de Educação do Estado do Pará</span></div>
+        <div class="person"><b>Andréa de Moura Rossy</b><span>Vice-Diretora Administrativa do Instituto de Educação do Estado do Pará</span></div>
+        <div class="person"><b>Cristiano Pinto da Silva<br>Maria Amália Pereira Cavalcante</b><span>Coordenadores Pedagógicos do Instituto de Educação do Estado do Pará</span></div>
+      </div>
+    </div>
+
+    <div class="credit-block">
+      <h3>Editorial</h3>
+      <div class="people">
+        <div class="person"><b>Cristiano Pinto da Silva</b><span>Organizador</span></div>
+        <div class="person"><b>Edilmary Oliveira Dias Teixeira</b><span>Capa, Supervisão Editorial</span></div>
+        <div class="person"><b>Chimênia Correa Pinheiro</b><span>Revisão</span></div>
+        <div class="person"><b>Renan Cauã Miranda Borges</b><span>Diagramação, Produção Editorial, Encadernação</span></div>
+      </div>
+    </div>
+
+    <div class="credit-block">
+      <h3>Quiz</h3>
+      <div class="people">
+        <div class="person"><b>Vinícius Ferreira Ramos</b><span>Desenvolvimento</span></div>
+      </div>
+    </div>
+
+    <p class="note">As perguntas foram extraídas da <i>Cartilha de Letramento Racial — Conceitos, Direitos e Educação Antirracista</i> (IEEP, 2026). As informações jurídicas da cartilha refletem as referências do documento de origem, consultadas em 2021; onde a lei mudou depois disso (como a Lei nº 14.532/2023, que equiparou a injúria racial ao crime de racismo), o quiz avisa na explicação. Para orientação sobre um caso concreto, procure a Defensoria Pública ou uma autoridade competente.</p>
+
+    <p class="inst"><b>Instituto de Educação do Estado do Pará – IEEP</b><br>Fundado em 13 de abril de 1871 · Lei nº 669/1871<br>Rua Gama Abreu, 256 – Campina · Belém – Pará</p>
+  </main>
+  <div class="faixa baixo" aria-hidden="true"></div>
+</div>
+
+<script src="perguntas.js"></script>
+<script>
+const BASE = 100, BONUS = 50;
+const $ = s => document.querySelector(s);
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+const fmt = s => { s = Math.round(s); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+const esc = t => t.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+/* Tempo de leitura esperado: ~3 palavras por segundo, mínimo de 8 s.
+   Bônus integral até esse tempo; depois cai aos poucos até zerar em 3× o tempo de leitura. */
+function readTime(item) {
+  const words = [item.q, item.a, ...item.d].join(' ').split(/\s+/).length;
+  return Math.max(8, words / 3);
+}
+function bonusFor(t, R) { return Math.round(BONUS * Math.min(1, Math.max(0, 1 - (t - R) / (2 * R)))); }
+
+/* ---------- Configurações ---------- */
+const cfg = () => ({ n: +document.querySelector('input[name="qtd"]:checked').value, som: $('#optSom').checked, voz: $('#optVoz').checked, mus: $('#optMus').checked });
+const recKey = n => `quiz-letramento:rec:${n}`;
+function renderRecord() {
+  const r = store.get(recKey(cfg().n));
+  $('#record').textContent = r ? `Seu recorde com ${cfg().n} perguntas: ${r} pontos` : `Ainda sem recorde com ${cfg().n} perguntas.`;
+}
+document.querySelectorAll('input[name="qtd"]').forEach(i => i.addEventListener('change', renderRecord));
+const prefs = store.get('quiz-letramento:prefs');
+if (prefs) { $('#optSom').checked = !!prefs.som; $('#optVoz').checked = !!prefs.voz; if ('mus' in prefs) $('#optMus').checked = !!prefs.mus; }
+const savePrefs = () => store.set('quiz-letramento:prefs', { som: $('#optSom').checked, voz: $('#optVoz').checked, mus: $('#optMus').checked });
+['#optSom', '#optVoz', '#optMus'].forEach(id => $(id).addEventListener('change', savePrefs));
+renderRecord();
+
+/* ---------- Som e voz ---------- */
+let audio = null;
+function ac() {
+  if (!audio) { try { audio = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return null; } }
+  if (audio.state === 'suspended') audio.resume();
+  return audio;
+}
+function tone(f, d, type = 'sine', delay = 0, vol = .1) {
+  if (!state.cfg || !state.cfg.som) return;
+  const a = ac(); if (!a) return;
+  const o = a.createOscillator(), g = a.createGain(), t = a.currentTime + delay;
+  o.type = type; o.frequency.value = f;
+  g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t + d + .05);
+}
+const sfx = {
+  right() { tone(587, .16, 'triangle'); tone(880, .3, 'triangle', .12); },
+  wrong() { tone(260, .28, 'sine', 0, .08); tone(196, .38, 'sine', .14, .08); },
+  end() { [523, 659, 784, 1046].forEach((f, i) => tone(f, .26, 'triangle', i * .13)); }
+};
+/* ---------- Música de fundo: trilha suave gerada no navegador (C – Am – F – G, ~100 bpm) ---------- */
+const music = { on: false, timer: 0, next: 0, step: 0, out: null, noise: null };
+const EIGHTH = 0.3;
+const CHORDS = [
+  { bass: 48, arp: [60, 64, 67, 72] }, { bass: 45, arp: [57, 60, 64, 69] },
+  { bass: 41, arp: [57, 60, 65, 69] }, { bass: 43, arp: [55, 59, 62, 67] }
+];
+const ARP = [0, 2, 1, 2, 3, 2, 1, 2];
+const MELODY = [ // compassos 5–8 do ciclo de 8: [passo, nota]
+  [[0, 76], [4, 74], [6, 72]], [[0, 72], [4, 71], [6, 69]],
+  [[0, 69], [3, 72], [4, 74], [6, 72]], [[0, 74], [4, 71], [6, 67]]
+];
+const hz = m => 440 * Math.pow(2, (m - 69) / 12);
+function voice(m, t, dur, type, vol) {
+  const a = audio, o = a.createOscillator(), g = a.createGain();
+  o.type = type; o.frequency.value = hz(m);
+  g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + .015); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+  o.connect(g).connect(music.out); o.start(t); o.stop(t + dur + .05);
+}
+function shaker(t, vol) {
+  const a = audio;
+  if (!music.noise) {
+    const b = a.createBuffer(1, a.sampleRate * .08, a.sampleRate), d = b.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+    music.noise = b;
+  }
+  const s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain();
+  s.buffer = music.noise; f.type = 'highpass'; f.frequency.value = 6500; g.gain.value = vol;
+  s.connect(f).connect(g).connect(music.out); s.start(t);
+}
+function playStep(step, t) {
+  const bar = Math.floor(step / 8) % 8, beat = step % 8, ch = CHORDS[bar % 4];
+  voice(ch.arp[ARP[beat]], t, .45, 'triangle', .035);
+  if (beat === 0 || beat === 4) voice(ch.bass, t, 1.1, 'sine', .11);
+  if (beat % 2 === 1) shaker(t, .018);
+  if (bar >= 4) MELODY[bar - 4].forEach(([b, n]) => { if (b === beat) voice(n, t, .9, 'sine', .045); });
+}
+function schedule() {
+  if (!music.on || !audio) return;
+  while (music.next < audio.currentTime + .35) { playStep(music.step, music.next); music.next += EIGHTH; music.step++; }
+}
+function musicStart() {
+  if (music.on) return;
+  const a = ac(); if (!a) return;
+  music.on = true;
+  const g = a.createGain(), lp = a.createBiquadFilter();
+  lp.type = 'lowpass'; lp.frequency.value = 2600;
+  g.gain.setValueAtTime(.0001, a.currentTime); g.gain.exponentialRampToValueAtTime(.8, a.currentTime + 2);
+  g.connect(lp).connect(a.destination);
+  music.out = g; music.next = a.currentTime + .1; music.step = 0;
+  clearInterval(music.timer); music.timer = setInterval(schedule, 60); schedule();
+}
+function musicStop(fade = .8) {
+  if (!music.on) return;
+  music.on = false; clearInterval(music.timer);
+  const a = audio, g = music.out;
+  try { g.gain.cancelScheduledValues(a.currentTime); g.gain.setValueAtTime(Math.max(g.gain.value, .0001), a.currentTime); g.gain.exponentialRampToValueAtTime(.0001, a.currentTime + fade); } catch (e) {}
+  setTimeout(() => { try { g.disconnect(); } catch (e) {} }, fade * 1000 + 300);
+}
+function musicDuck(down) {
+  if (!music.on || !audio) return;
+  const g = music.out.gain, t = audio.currentTime;
+  g.cancelScheduledValues(t); g.setValueAtTime(Math.max(g.value, .0001), t); g.exponentialRampToValueAtTime(down ? .2 : .8, t + .4);
+}
+const MUTE_ON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>';
+const MUTE_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/><path d="M3 3l18 18"/></svg>';
+function renderMute() {
+  const on = $('#optMus').checked, b = $('#muteBtn');
+  b.innerHTML = on ? MUTE_ON : MUTE_OFF; b.classList.toggle('off', !on);
+  b.setAttribute('aria-label', on ? 'Desligar música' : 'Ligar música');
+}
+renderMute();
+$('#muteBtn').addEventListener('click', () => {
+  $('#optMus').checked = !$('#optMus').checked; savePrefs(); renderMute();
+  if ($('#optMus').checked) musicStart(); else musicStop(.4);
+});
+$('#optMus').addEventListener('change', renderMute);
+document.addEventListener('visibilitychange', () => {
+  if (!audio) return;
+  try { document.hidden ? audio.suspend() : audio.resume(); } catch (e) {}
+});
+
+function say(text, cb) {
+  let done = false;
+  const fin = () => { if (done) return; done = true; musicDuck(false); cb && cb(); };
+  try {
+    const s = window.speechSynthesis; if (!s) return fin();
+    musicDuck(true);
+    s.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'pt-BR'; u.rate = 1;
+    const v = s.getVoices().find(v => /pt[-_]BR/i.test(v.lang)); if (v) u.voice = v;
+    u.onend = fin; u.onerror = fin;
+    s.speak(u);
+    setTimeout(fin, Math.min(60000, 2000 + text.length * 75));
+  } catch (e) { fin(); }
+}
+function hush() { try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) {} }
+
+/* ---------- Montagem do quiz: espalha as perguntas por todas as seções ---------- */
+function buildQuiz(n) {
+  const bySec = {};
+  shuffle(PERGUNTAS).forEach(p => (bySec[p.s] = bySec[p.s] || []).push(p));
+  const order = shuffle(Object.keys(bySec)), out = [];
+  while (out.length < n && order.some(k => bySec[k].length)) {
+    for (const k of order) { if (out.length >= n) break; if (bySec[k].length) out.push(bySec[k].pop()); }
+  }
+  return shuffle(out).map(p => ({ ...p, options: shuffle([p.a, ...p.d]), R: readTime(p) }));
+}
+
+/* ---------- Estado e cronômetro (pausa no feedback, na confirmação e com a aba oculta) ---------- */
+const state = { cfg: null, q: [], i: 0, score: 0, base: 0, bonus: 0, results: [], answered: false };
+let tStart = null, qElapsed = 0, totalTime = 0, tick = 0, qToken = 0, paused = false;
+const running = () => tStart !== null;
+function startClock() { if (!running()) tStart = performance.now(); }
+function stopClock() { if (running()) { qElapsed += (performance.now() - tStart) / 1000; tStart = null; } }
+const elapsedNow = () => qElapsed + (running() ? (performance.now() - tStart) / 1000 : 0);
+function renderClock() { $('#clock').textContent = fmt(totalTime + elapsedNow()); }
+document.addEventListener('visibilitychange', () => {
+  if ($('#game').hidden || state.answered || paused) return;
+  if (document.hidden) stopClock(); else startClock();
+});
+
+function show(id) { ['home', 'game', 'result'].forEach(s => $('#' + s).hidden = s !== id); window.scrollTo(0, 0); }
+
+function startGame() {
+  ac();
+  state.cfg = cfg();
+  Object.assign(state, { q: buildQuiz(state.cfg.n), i: 0, score: 0, base: 0, bonus: 0, results: [] });
+  totalTime = 0;
+  $('#score').textContent = '0 pts';
+  clearInterval(tick); tick = setInterval(renderClock, 500);
+  renderMute();
+  if (state.cfg.mus) musicStart();
+  show('game');
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = state.q[state.i];
+  state.answered = false; qElapsed = 0; tStart = null;
+  $('#count').textContent = `${state.i + 1}/${state.q.length}`;
+  $('#bar').style.width = `${state.i / state.q.length * 100}%`;
+  $('#sec').textContent = SECOES[q.s];
+  const qt = $('#qtext'); qt.textContent = q.q; qt.classList.remove('anim'); void qt.offsetWidth; qt.classList.add('anim');
+  $('#opts').innerHTML = q.options.map((o, k) =>
+    `<button class="opt" data-k="${k}"><span class="key">${'ABCD'[k]}</span><span>${esc(o)}</span></button>`).join('');
+  $('#feedback').hidden = true; $('#nextBtn').hidden = true;
+  renderClock();
+  const tok = ++qToken;
+  if (state.cfg.voz) {
+    say(q.q + '. ' + q.options.map((o, k) => `Letra ${'ABCD'[k]}: ${o}`).join(' '),
+      () => { if (tok === qToken && !state.answered && !paused) startClock(); });
+  } else startClock();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function answer(k) {
+  if (state.answered) return;
+  state.answered = true; qToken++; hush();
+  stopClock();
+  const t = qElapsed; totalTime += t;
+  const q = state.q[state.i];
+  const ok = q.options[k] === q.a;
+  const bonus = ok ? bonusFor(t, q.R) : 0;
+  const pts = ok ? BASE + bonus : 0;
+  state.score += pts; if (ok) { state.base += BASE; state.bonus += bonus; }
+  state.results.push({ q, chosen: q.options[k], ok, t, pts });
+
+  document.querySelectorAll('.opt').forEach((b, j) => {
+    b.disabled = true;
+    if (q.options[j] === q.a) b.classList.add('is-right');
+    else if (j === k) b.classList.add('is-wrong');
+    else b.classList.add('is-dim');
+  });
+  $('#score').textContent = `${state.score} pts`;
+  const fb = $('#feedback');
+  fb.classList.toggle('bad', !ok);
+  $('#fbTitle').textContent = ok ? 'Resposta correta!' : 'Não foi dessa vez';
+  $('#fbPts').innerHTML = ok
+    ? `<b>+${BASE}</b> acerto · <b>+${bonus}</b> leitura · ${fmt(t)}`
+    : `Tempo nesta pergunta: ${fmt(t)}`;
+  $('#fbExp').textContent = q.e;
+  $('#fbRef').textContent = `Cartilha · ${SECOES[q.s]}`;
+  fb.hidden = false;
+  $('#nextBtn').textContent = state.i === state.q.length - 1 ? 'Ver resultado' : 'Próxima pergunta';
+  $('#nextBtn').hidden = false;
+  ok ? sfx.right() : sfx.wrong();
+  if (state.cfg.voz) say((ok ? 'Resposta correta. ' : 'Não foi dessa vez. ') + q.e);
+  renderClock();
+  requestAnimationFrame(() => fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
+}
+
+function next() {
+  hush();
+  if (state.i < state.q.length - 1) { state.i++; showQuestion(); }
+  else finish();
+}
+
+const STAR = on => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 17.2l-5.9 3.3 1.3-6.6-4.9-4.5 6.6-.8z" fill="${on ? 'var(--gold)' : 'none'}" stroke="var(--terra)" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+function finish() {
+  clearInterval(tick);
+  musicStop(1.2);
+  $('#bar').style.width = '100%';
+  const n = state.q.length, c = state.results.filter(r => r.ok).length, pct = c / n;
+  const lvl = pct >= .9 ? 3 : pct >= .7 ? 2 : pct >= .4 ? 1 : 0;
+  $('#stars').innerHTML = [0, 1, 2].map(i => STAR(i < lvl)).join('');
+  $('#rank').textContent = ['Primeiros passos', 'Leitura atenta', 'Consciência em ação', 'Referência antirracista'][lvl];
+  $('#rPoints').textContent = state.score;
+  $('#rCorrect').textContent = `${c}/${n}`;
+  $('#rTime').textContent = fmt(totalTime);
+  $('#rAvg').textContent = `${Math.round(totalTime / n)}s`;
+  $('#breakdown').textContent = `${state.base} pontos de acertos + ${state.bonus} de bônus de leitura (máximo possível: ${n * (BASE + BONUS)}).`;
+  const key = recKey(n), prev = store.get(key) || 0, isRec = state.score > prev && state.score > 0;
+  if (isRec) store.set(key, state.score);
+  $('#rBest').textContent = Math.max(prev, state.score);
+  $('#newrec').hidden = !isRec;
+
+  const sorted = state.results.slice().sort((a, b) => a.ok - b.ok);
+  $('#reviewList').innerHTML = sorted.map(r => `
+    <details class="rv"${r.ok ? '' : ' open'}>
+      <summary><span class="mark ${r.ok ? 'ok' : 'no'}">${r.ok ? '✓' : '✕'}</span><span>${esc(r.q.q)}</span></summary>
+      <div class="body">
+        ${r.ok ? '' : `<span class="yours">Sua resposta: ${esc(r.chosen)}</span>`}
+        <span class="right">Resposta correta: ${esc(r.q.a)}</span>
+        <span class="why">${esc(r.q.e)}</span>
+        <span class="ref">Cartilha · ${SECOES[r.q.s]}</span>
+      </div>
+    </details>`).join('');
+  show('result');
+  sfx.end();
+  if (state.cfg.voz) say(`Você acertou ${c} de ${n} e fez ${state.score} pontos.`);
+}
+
+function goHome() { musicStop(.5); qToken++; stopClock(); clearInterval(tick); hush(); renderRecord(); show('home'); }
+
+/* ---------- Eventos ---------- */
+$('#startBtn').addEventListener('click', startGame);
+$('#opts').addEventListener('click', e => { const b = e.target.closest('.opt'); if (b) answer(+b.dataset.k); });
+$('#nextBtn').addEventListener('click', next);
+$('#againBtn').addEventListener('click', startGame);
+$('#homeBtn').addEventListener('click', goHome);
+
+function askQuit() {
+  paused = true; qToken++; stopClock(); hush();
+  $('#confirmText').innerHTML = `Você está na pergunta <b>${state.i + 1} de ${state.q.length}</b>, com <b>${state.score} pontos</b>. Se sair agora, o progresso será perdido.`;
+  $('#confirm').hidden = false; $('#keepBtn').focus({ preventScroll: true });
+}
+function keepGoing() { $('#confirm').hidden = true; paused = false; if (!state.answered) startClock(); }
+$('#quitBtn').addEventListener('click', askQuit);
+$('#keepBtn').addEventListener('click', keepGoing);
+$('#endBtn').addEventListener('click', () => { $('#confirm').hidden = true; paused = false; goHome(); });
+$('#confirm').addEventListener('click', e => { if (e.target.id === 'confirm') keepGoing(); });
+
+function openCredits() { $('#credits').hidden = false; $('#credits').scrollTop = 0; $('#closeCredits').focus({ preventScroll: true }); }
+function closeCredits() { $('#credits').hidden = true; $('#creditsBtn').focus({ preventScroll: true }); }
+$('#creditsBtn').addEventListener('click', openCredits);
+$('#closeCredits').addEventListener('click', closeCredits);
+
+document.addEventListener('keydown', e => {
+  if (!$('#credits').hidden) { if (e.key === 'Escape') closeCredits(); return; }
+  if (!$('#confirm').hidden) { if (e.key === 'Escape') keepGoing(); return; }
+  if ($('#game').hidden) return;
+  if (state.answered && e.key === 'Enter' && document.activeElement !== $('#nextBtn')) { e.preventDefault(); next(); return; }
+  const k = 'abcd'.indexOf(e.key.toLowerCase()), d = '1234'.indexOf(e.key);
+  if (!state.answered && (k >= 0 || d >= 0)) answer(k >= 0 ? k : d);
+});
+</script>
+</body>
+</html>
